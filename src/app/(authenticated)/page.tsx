@@ -13,7 +13,7 @@ export default async function DashboardPage() {
       </p>
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         <a
-          href="/applicant-users"
+          href="/applicants"
           className="rounded-lg border bg-card p-6 transition-colors hover:bg-accent"
         >
           <h2 className="text-lg font-semibold">Applicant Users</h2>
