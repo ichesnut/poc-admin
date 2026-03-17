@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Users, Briefcase, LayoutDashboard, LogOut } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { TesseractLogo } from "@/components/tesseract-logo";
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
@@ -16,7 +17,8 @@ export function Sidebar() {
 
   return (
     <aside className="flex h-screen w-64 flex-col border-r border-sidebar-border bg-sidebar">
-      <div className="flex h-14 items-center border-b border-sidebar-border px-4">
+      <div className="flex h-14 items-center gap-2 border-b border-sidebar-border px-4">
+        <TesseractLogo size={28} className="text-sidebar-foreground" />
         <h1 className="text-lg font-semibold text-sidebar-foreground">
           Admin
         </h1>
