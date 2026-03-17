@@ -1,6 +1,7 @@
 import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { applicantQuery } from "@/lib/applicant-db";
+import { CopyButton } from "@/components/copy-button";
 
 interface ApplicantUser {
   id: string;
@@ -56,7 +57,7 @@ export default async function ApplicantUsersPage() {
                 users.map((user) => (
                   <tr key={user.id} className="border-b last:border-0">
                     <td className="px-4 py-3">{user.name ?? "—"}</td>
-                    <td className="px-4 py-3">{user.email}</td>
+                    <td className="px-4 py-3"><span className="inline-flex items-center gap-1">{user.email} <CopyButton value={user.email} /></span></td>
                     <td className="px-4 py-3 text-muted-foreground">
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>

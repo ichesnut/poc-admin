@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { LoanOfficerSearch } from "./search";
+import { CopyButton } from "@/components/copy-button";
 
 interface LoanOfficerRow {
   id: string;
@@ -122,7 +123,7 @@ export default async function LoanOfficerUsersPage({
                         {user.name ?? "—"}
                       </Link>
                     </TableCell>
-                    <TableCell className="px-4">{user.email}</TableCell>
+                    <TableCell className="px-4"><span className="inline-flex items-center gap-1">{user.email} <CopyButton value={user.email} /></span></TableCell>
                     <TableCell className="px-4">
                       <RoleBadge role={user.role} />
                     </TableCell>

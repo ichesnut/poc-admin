@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { BranchSearch } from "./search";
+import { CopyButton } from "@/components/copy-button";
 
 const STATE_VARIANTS: Record<string, "default" | "secondary" | "destructive" | "outline"> = {
   active: "default",
@@ -110,7 +111,7 @@ export default async function BranchesPage({
                     </Link>
                   </TableCell>
                   <TableCell className="px-4 font-mono text-xs">
-                    {branch.number}
+                    <span className="inline-flex items-center gap-1">{branch.number} <CopyButton value={branch.number} /></span>
                   </TableCell>
                   <TableCell className="px-4">
                     <Badge variant={STATE_VARIANTS[branch.state] ?? "outline"} className="capitalize">

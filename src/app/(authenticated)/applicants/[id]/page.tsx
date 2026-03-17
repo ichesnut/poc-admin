@@ -18,6 +18,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { CopyButton } from "@/components/copy-button";
 
 interface ApplicantUser {
   id: string;
@@ -116,13 +117,13 @@ export default async function ApplicantDetailPage({
       <Card>
         <CardHeader>
           <CardTitle>{user.name ?? "Unnamed User"}</CardTitle>
-          <CardDescription>{user.email}</CardDescription>
+          <CardDescription><span className="inline-flex items-center gap-1">{user.email} <CopyButton value={user.email} /></span></CardDescription>
         </CardHeader>
         <CardContent>
           <dl className="grid grid-cols-2 gap-4 text-sm">
             <div>
               <dt className="font-medium text-muted-foreground">User ID</dt>
-              <dd className="mt-1 font-mono text-xs">{user.id}</dd>
+              <dd className="mt-1 inline-flex items-center gap-1 font-mono text-xs">{user.id} <CopyButton value={user.id} /></dd>
             </div>
             <div>
               <dt className="font-medium text-muted-foreground">
@@ -170,7 +171,7 @@ export default async function ApplicantDetailPage({
                 {applications.map((app) => (
                   <TableRow key={app.id}>
                     <TableCell className="font-mono text-xs">
-                      {app.referenceId}
+                      <span className="inline-flex items-center gap-1">{app.referenceId} <CopyButton value={app.referenceId} /></span>
                     </TableCell>
                     <TableCell>
                       <StatusBadge status={app.status} />

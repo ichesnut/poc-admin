@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { BranchForm } from "../branch-form";
+import { CopyButton } from "@/components/copy-button";
 import { DeleteBranchButton } from "./delete-button";
 
 interface LoanOfficer {
@@ -105,13 +106,13 @@ export default async function BranchDetailPage({
               {branch.state}
             </Badge>
           </div>
-          <CardDescription>Branch #{branch.number}</CardDescription>
+          <CardDescription><span className="inline-flex items-center gap-1">Branch #{branch.number} <CopyButton value={branch.number} /></span></CardDescription>
         </CardHeader>
         <CardContent>
           <dl className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-4">
             <div>
               <dt className="text-muted-foreground">Branch Number</dt>
-              <dd className="mt-0.5 font-mono">{branch.number}</dd>
+              <dd className="mt-0.5 inline-flex items-center gap-1 font-mono">{branch.number} <CopyButton value={branch.number} /></dd>
             </div>
             <div>
               <dt className="text-muted-foreground">State</dt>

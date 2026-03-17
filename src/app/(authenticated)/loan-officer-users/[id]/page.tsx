@@ -18,6 +18,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { CopyButton } from "@/components/copy-button";
 
 interface LoanOfficerUser {
   id: string;
@@ -129,7 +130,7 @@ export default async function LoanOfficerDetailPage({
               {user.isActive ? "Active" : "Inactive"}
             </Badge>
           </div>
-          <CardDescription>{user.email}</CardDescription>
+          <CardDescription><span className="inline-flex items-center gap-1">{user.email} <CopyButton value={user.email} /></span></CardDescription>
         </CardHeader>
         <CardContent>
           <dl className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm sm:grid-cols-4">
@@ -248,7 +249,7 @@ function ApplicationTable({
           {applications.map((app) => (
             <TableRow key={app.id}>
               <TableCell className="px-4 font-mono text-xs">
-                {app.loanNumber.slice(0, 12)}…
+                <span className="inline-flex items-center gap-1">{app.loanNumber.slice(0, 12)}… <CopyButton value={app.loanNumber} /></span>
               </TableCell>
               <TableCell className="px-4">
                 {app.borrower_name ?? "—"}

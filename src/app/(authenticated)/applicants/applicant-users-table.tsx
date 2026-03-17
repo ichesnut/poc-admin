@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/table";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
+import { CopyButton } from "@/components/copy-button";
 
 interface ApplicantUser {
   id: string;
@@ -86,7 +87,7 @@ export function ApplicantUsersTable({
                       {user.name ?? "—"}
                     </Link>
                   </TableCell>
-                  <TableCell>{user.email}</TableCell>
+                  <TableCell><span className="inline-flex items-center gap-1">{user.email} <CopyButton value={user.email} /></span></TableCell>
                   <TableCell className="text-muted-foreground">
                     {new Date(user.createdAt).toLocaleDateString()}
                   </TableCell>
