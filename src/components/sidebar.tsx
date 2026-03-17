@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Users, Briefcase, LayoutDashboard, LogOut, Building2 } from "lucide-react";
+import { Users, Briefcase, LayoutDashboard, LogOut, Building2, Route } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TesseractLogo } from "@/components/tesseract-logo";
 
@@ -11,6 +11,7 @@ const navItems = [
   { href: "/applicants", label: "Applicant Users", icon: Users },
   { href: "/loan-officer-users", label: "Loan Officer Users", icon: Briefcase },
   { href: "/branches", label: "Branches", icon: Building2 },
+  { href: "/routing", label: "Routing", icon: Route },
 ];
 
 export function Sidebar() {

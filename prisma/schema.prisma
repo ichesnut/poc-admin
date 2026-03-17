@@ -56,3 +56,29 @@ model Branch {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
 }
+
+model RoutingStrategy {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  enabled     Boolean  @default(true)
+
+  // Applicant Criteria
+  maxDistanceMiles Int?
+  allowableRisks   String[] @default([])
+
+  // Application Criteria
+  appTypes         String[] @default([])
+  fraudAlerts      String?
+  allowedBorrowers String[] @default([])
+
+  // Branch Criteria
+  supportsAfterHours Boolean @default(false)
+  atLoanCapacity     Boolean @default(false)
+
+  // Loan Specialist / Person Criteria
+  supportsSpanish Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
