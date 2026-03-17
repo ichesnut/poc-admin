@@ -30,17 +30,25 @@ export default async function BranchesPage({
 
   const { q } = await searchParams;
 
-  const branches = await prisma.branch.findMany({
-    where: q
-      ? {
-          OR: [
-            { name: { contains: q, mode: "insensitive" } },
-            { number: { contains: q, mode: "insensitive" } },
-          ],
-        }
-      : undefined,
-    orderBy: { createdAt: "desc" },
-  });
+  let branches: Awaited<ReturnType<typeof prisma.branch.findMany>> = [];
+  let error: string | null = null;
+
+  try {
+    branches = await prisma.branch.findMany({
+      where: q
+        ? {
+            OR: [
+              { name: { contains: q, mode: "insensitive" } },
+              { number: { contains: q, mode: "insensitive" } },
+            ],
+          }
+        : undefined,
+      orderBy: { createdAt: "desc" },
+    });
+  } catch {
+    error =
+      "Could not load branches. Ensure DATABASE_URL is configured and the database is migrated.";
+  }
 
   return (
     <div>
@@ -63,6 +71,11 @@ export default async function BranchesPage({
         <BranchSearch defaultValue={q} />
       </div>
 
+      {error ? (
+        <div className="mt-6 rounded-lg border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
+          {error}
+        </div>
+      ) : (
       <div className="mt-4 rounded-lg border">
         <Table>
           <TableHeader>
@@ -128,6 +141,7 @@ export default async function BranchesPage({
           </TableBody>
         </Table>
       </div>
+      )}
     </div>
   );
 }
