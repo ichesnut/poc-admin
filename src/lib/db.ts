@@ -13,6 +13,11 @@ function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
+// Invalidate cached client if it's stale (missing models added after initial creation)
+if (globalForPrisma.prisma && !globalForPrisma.prisma.branch) {
+  globalForPrisma.prisma = undefined;
+}
+
 export const prisma = globalForPrisma.prisma ?? createPrismaClient();
 
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;
