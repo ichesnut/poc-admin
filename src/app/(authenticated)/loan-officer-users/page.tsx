@@ -19,7 +19,7 @@ export default async function LoanOfficerUsersPage() {
 
   try {
     users = await loanOfficerQuery<LoanOfficerUser>(
-      'SELECT id, email, name, role, "createdAt" FROM "User" ORDER BY "createdAt" DESC',
+      'SELECT id, email, name, role, "createdAt" FROM users ORDER BY "createdAt" DESC',
     );
   } catch (e) {
     error = "Could not connect to the Loan Officer database. Ensure LOAN_OFFICER_DATABASE_URL is configured.";
