@@ -14,7 +14,10 @@ function createPrismaClient() {
 }
 
 // Invalidate cached client if it's stale (missing models added after initial creation)
-if (globalForPrisma.prisma && !globalForPrisma.prisma.branch) {
+if (
+  globalForPrisma.prisma &&
+  (!globalForPrisma.prisma.branch || !globalForPrisma.prisma.routingStrategy)
+) {
   globalForPrisma.prisma = undefined;
 }
 
