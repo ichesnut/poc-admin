@@ -20,7 +20,7 @@ export function Sidebar() {
       <div className="flex h-14 items-center gap-2 border-b border-sidebar-border px-4">
         <TesseractLogo size={28} className="text-sidebar-foreground" />
         <h1 className="text-lg font-semibold text-sidebar-foreground">
-          Admin
+          Tesseract Admin
         </h1>
       </div>
 
