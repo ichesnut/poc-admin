@@ -44,3 +44,15 @@ model Session {
   expires      DateTime
   user         AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Branch {
+  id             String   @id @default(cuid())
+  name           String
+  number         String   @unique
+  state          String
+  managerId      String
+  managerName    String?
+  capabilities   String[] @default([])
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
